@@ -1,5 +1,5 @@
 hello
-how are you
+
 hey reco
 google 
 open chrome
@@ -21,6 +21,6 @@ pause
 minimize
 maximize
 normal
-search for
+
 scroll down
 scroll up

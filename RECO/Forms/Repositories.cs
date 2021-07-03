@@ -136,8 +136,8 @@ namespace RECO.Forms
             }
             senderBtn.Click += delegate { 
             using var x = new OpenFileDialog();
-                x.InitialDirectory = @"C:\";
-                x.Filter = "Photos files (*.png,*.jpg,*.jpeg)|*.png|*.jpg|*.jpeg";
+               // x.InitialDirectory = @"C:\";
+               // x.Filter = "Photos files (*.png,*.jpg,*.jpeg)|*.png|*.jpg|*.jpeg";
                 x.Multiselect = true;
                 x.ShowDialog();
                 for (int i = 0; i < x.FileNames.Count(); i++)

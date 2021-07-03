@@ -11,14 +11,12 @@ using System.IO;
 using System.Media;
 using System.Diagnostics;
 
-
 namespace RECO.Forms
 {
     public partial class Listen : Form
     {
         public bool Wake = false;
-        public bool search = false;
-
+        
         formMain Main = new formMain();
 
         public Listen()
@@ -33,7 +31,7 @@ namespace RECO.Forms
         {
             ss.SelectVoiceByHints(VoiceGender.Male);
             Choices list = new Choices();
-            list.Add(File.ReadAllLines(@"..\\..\\commands\\commands.txt"));
+            list.Add(File.ReadAllLines(@"C:\Users\a7med\OneDrive\Desktop\RECO\RECO\commands\commands.txt"));
             Grammar gm = new Grammar(new GrammarBuilder(list));
 
             if (pictureBox2.Visible == true)
@@ -41,7 +39,7 @@ namespace RECO.Forms
                 pictureBox1.Visible = true;
                 pictureBox2.Visible = false;
                 btnStart.Text = "Stop";
-
+                
             }
             else if (pictureBox1.Visible == true)
             {
@@ -67,7 +65,7 @@ namespace RECO.Forms
             pb.AppendText(richText.Text);
             ss.Speak(pb);
         }
-        public void Say(string phrase)
+        public void Say (string phrase)
         {
             ss.SpeakAsync(phrase);
             Wake = false;
@@ -78,48 +76,38 @@ namespace RECO.Forms
 
             if (speechSaid == "hey reco")
             {
-                SoundPlayer player = new SoundPlayer(@"..\\..\\sounds\\google.wav");
+                SoundPlayer player = new SoundPlayer(@"C:\Users\a7med\OneDrive\Desktop\RECO\RECO\sounds\google.wav");
                 player.Play();
                 Wake = true;
             }
 
-            if (speechSaid == "exit")
+            if (speechSaid =="exit")
             {
                 ss.Speak("shutting down");
                 Application.Exit();
             }
 
-            if (search)
-            {
-                ss.Speak("here is the result for you");
-                Process.Start(@"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe", @"https://www.google.com/search?q=" + speechSaid);
-                search = false;
-            }
+            
 
-            if (Wake == true && search == false)
+            if (Wake == true )
             {
                 switch (speechSaid)
                 {
-                    case ("search for"):
-                        search = true;
-                        break;
 
                     case ("hello"):
-                        Say("hi..how can i help you");
+                        Say("hi..how can i help");
                         break;
 
-                    case ("how are you"):
-                        Say("im good , how about you");
-                        break;
+                   
 
                     case ("google"):
                         Say("opening google");
-                        Process.Start(@"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe", @"http://www.google.com/");
+                        Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe", @"http://www.google.com/");
                         break;
 
                     case ("open chrome"):
                         Say("opening chrome");
-                        Process.Start(@"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe");
+                        Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe");
                         break;
 
                     case ("close"):
@@ -129,7 +117,7 @@ namespace RECO.Forms
 
                     case ("open youtube"):
                         Say("opening youtube");
-                        Process.Start(@"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe", @"http://www.youtube.com/");
+                        Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe", @"http://www.youtube.com/");
                         break;
 
                     case ("what day we are in"):
@@ -147,12 +135,12 @@ namespace RECO.Forms
 
                     case ("close tab"):
                         Say("closing tab");
-                        SendKeys.Send("^w");
+                        SendKeys.Send("{^w}");
                         break;
 
                     case ("new tab"):
                         Say("opening new tab");
-                        SendKeys.Send("^t");
+                        SendKeys.Send("{^t}");
                         break;
 
                     case ("scroll down"):
@@ -165,12 +153,12 @@ namespace RECO.Forms
 
                     case ("last tab"):
                         Say("opening last tab");
-                        SendKeys.Send("^+t");
+                        SendKeys.Send("{^+t}");
                         break;
 
                     case ("save"):
                         Say("saving");
-                        SendKeys.Send("^s");
+                        SendKeys.Send("{^s}");
                         break;
 
                     case ("next"):
@@ -215,12 +203,12 @@ namespace RECO.Forms
                 }
 
             }
-            /*  switch (speechSaid)
-              {
-                  case ("hello"):
-                      Say("hi.. how can i help you");
-                      break;
-              }*/
+          /*  switch (speechSaid)
+            {
+                case ("hello"):
+                    Say("hi.. how can i help you");
+                    break;
+            }*/
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

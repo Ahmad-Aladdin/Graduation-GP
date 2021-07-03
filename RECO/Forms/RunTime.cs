@@ -46,7 +46,8 @@ namespace RECO.Forms
             for (int i = 0; i < length; i++)
             {
                 FileInfo f = new FileInfo(dirs[i]);
-                keywords.Add(f.Name);
+                keywords.Add(f.Name.ToLower());
+                keywords.Add(f.Name.ToUpper());
             }
 
         }
@@ -56,44 +57,68 @@ namespace RECO.Forms
             string speechSaid = e.Result.Text;
             if (speechSaid == "Browse" && e.Result.Confidence > 0.90)
             {
+                label3.Visible = false;
                 OpenFileDialog op1 = new OpenFileDialog();
                 if (op1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    inputFile = op1.FileName;
-                    outputFile = inputFile.Substring(0, inputFile.IndexOf("."));
+                    if (op1.FileName != null)
+                    {
+                        inputFile = op1.FileName;
+                        outputFile = inputFile.Substring(0, inputFile.IndexOf("."));
+                    }
                 }
 
-                string temp = Path.GetExtension(inputFile);
-                pictureBox1.Visible = false;
-                pictureBox2.Visible = true;
-                if (temp == ".mp4")
+                if (inputFile != null)
                 {
-                    convert_file();
-                    outputFile = outputFile + ".mp3";
+                    string temp = Path.GetExtension(inputFile);
+                    if (temp != ".mp3" && temp != ".mp4")
+                    {
+                        label6.Visible = true;
+                        return;
+                    }
+
+                    pictureBox1.Visible = false;
+                    pictureBox2.Visible = true;
+
+
+
+                    if (temp == ".mp4")
+                    {
+                        convert_file();
+                        outputFile = outputFile + ".mp3";
+                    }
+
+
+                    else if (temp == ".mp3")
+                    {
+                        outputFile = inputFile;
+                    }
+
+                    label6.Visible = false;
+                    transcribe();
+                    save_to_txt();
+                    pictureBox2.Visible = false;
+                    label4.Visible = true;
+
                 }
 
 
-                else if (temp == ".mp3")
-                {
-                    outputFile = inputFile;
-                }
 
-                transcribe();
-                save_to_txt();
-                pictureBox2.Visible = false;
-                pictureBox1.Visible = true;
 
-                //var clip = axWindowsMediaPlayer1.newMedia(inputFile);
-
-                //file_duration = clip.duration;
             }
 
             else if (speechSaid == "Play" && e.Result.Confidence > 0.90)
             {
-                file_reading();
-                axWindowsMediaPlayer1.URL = inputFile;
-                axWindowsMediaPlayer1.Ctlcontrols.play();
-                axWindowsMediaPlayer1.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(axWindowsMediaPlayer1_PlayStateChange);
+                if (inputFile != null)
+                {
+                    label4.Visible = false;
+                    pictureBox1.Visible = true;
+                    file_reading();
+                    axWindowsMediaPlayer1.URL = inputFile;
+                    axWindowsMediaPlayer1.Ctlcontrols.play();
+                    axWindowsMediaPlayer1.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(axWindowsMediaPlayer1_PlayStateChange);
+                }
+
             }
 
             else if (speechSaid == "Exit" && e.Result.Confidence > 0.90)
@@ -162,10 +187,14 @@ namespace RECO.Forms
 
             if (keys != null && start_times != null && end_times != null)
             {
+                if (File.Exists(fileName))
+                {
+                    File.Delete(fileName);
+                }
                 int i;
                 for (i = 0; i < keys.Count; i++)
                 {
-                    File.WriteAllText(fileName, keys[i] + "\t" + start_times[i] + "\t" + end_times[i] + "\n");
+                    File.AppendAllText(fileName, keys[i] + "\t" + start_times[i] + "\t" + end_times[i] + "\n");
                 }
             }
         }
