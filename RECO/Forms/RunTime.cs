@@ -53,7 +53,6 @@ namespace RECO.Forms
                 keywords.Add(f.Name.ToLower());
                 keywords.Add(f.Name.ToUpper());
             }
-
         }
 
         private void Sr_SpeechRecogized(object sender, SpeechRecognizedEventArgs e)

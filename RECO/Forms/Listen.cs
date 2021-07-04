@@ -46,7 +46,7 @@ namespace RECO.Forms
                 pictureBox2.Visible = true;
                 pictureBox1.Visible = false;
                 btnStart.Text = "Start listening";
-                sr.RecognizeAsyncStop();
+                ss.SpeakAsyncCancelAll();
             }
             try
             {

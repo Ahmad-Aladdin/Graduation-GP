@@ -158,7 +158,7 @@ namespace RECO.Forms
                 RecButton.OnHoverButtonColor = Color.Red;    
                 RecButton.TextColor = Color.White;
                // RecButton.BorderColor = Color.Green;
-                RecButton.ButtonColor = Color.Green;
+                RecButton.ButtonColor = Color.MediumPurple;
                 RecButton.ForeColor = Color.Red;
                 RecButton.FlatAppearance.BorderSize = 0;
                 //RecButton.BackColor = Color.Transparent;
@@ -427,6 +427,9 @@ namespace RECO.Forms
             }
             return compare;
         }
+
+
+
             public void viewRepos(string path = @"D:\AllRepos\")
         {
             if (Frender)
@@ -585,6 +588,10 @@ namespace RECO.Forms
                 flowLayoutPanel1.Controls.Add(addReposmsg);
             else addReposmsg.Visible = false;
         }//end viewropos msg
+
+
+
+
         private void iconButton1_Click(object sender, EventArgs e)
         {
             // addReposmsg.Dispose(); // if user v
@@ -717,9 +724,7 @@ namespace RECO.Forms
                 }
                 else
                 {
-                    
                     buttonEdit(repoRename);
-
                     Delete(button_x, dir, panel);
                     buttonDelete(button_x);
                     buttonRec(button_O);
