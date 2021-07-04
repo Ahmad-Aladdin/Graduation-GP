@@ -7,12 +7,16 @@ using IBM.Watson.SpeechToText.v1;
 using System.IO;
 using NReco.VideoConverter;
 using System.Speech.Recognition;
+using System.Runtime.InteropServices;
 
 
 namespace RECO.Forms
 {
     public partial class RunTime : Form
     {
+        [DllImport("wininet.dll")]
+        private extern static bool InternetGetConnectedState(out int conn, int val);
+
         string inputFile;
         string outputFile;
         string[] words;
@@ -78,9 +82,6 @@ namespace RECO.Forms
                     }
 
                     pictureBox1.Visible = false;
-                    pictureBox2.Visible = true;
-
-
 
                     if (temp == ".mp4")
                     {
@@ -95,10 +96,21 @@ namespace RECO.Forms
                     }
 
                     label6.Visible = false;
-                    transcribe();
-                    save_to_txt();
-                    pictureBox2.Visible = false;
-                    label4.Visible = true;
+                    int Out;
+                    if (InternetGetConnectedState(out Out, 0) == true)
+                    {
+                        pictureBox2.Visible = true;
+                        transcribe();
+                        save_to_txt();
+                        pictureBox2.Visible = false;
+                        label4.Visible = true;
+                    }
+
+                    else
+                    {
+                        label7.Visible = true;
+                    }
+
 
                 }
 
@@ -134,12 +146,13 @@ namespace RECO.Forms
             SpeechToTextService speechtotext = new SpeechToTextService(authenticator);
             speechtotext.SetServiceUrl(url);
 
+
             var result = speechtotext.Recognize(
-                audio: new MemoryStream(File.ReadAllBytes(outputFile)),
-                contentType: "audio/mp3",
-                keywords: keywords,
-                keywordsThreshold: 0.5f
-                );
+            audio: new MemoryStream(File.ReadAllBytes(outputFile)),
+            contentType: "audio/mp3",
+            keywords: keywords,
+            keywordsThreshold: 0.5f
+            );
 
 
             var response = result.Response;

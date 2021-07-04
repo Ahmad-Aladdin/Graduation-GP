@@ -146,6 +146,33 @@ namespace RECO.Forms
                 }
             };
         }
+
+        private void buttonRec(RoundedButton RecButton)
+        {
+            if (!Frender)
+            {
+                RecButton.FlatStyle = FlatStyle.Flat;
+                // DeleteButton.BackColor = Color.FromArgb(21, 168, 194);
+               // RecButton.ButtonColor = Color.FromArgb(21, 168, 194);
+                //RecButton.OnHoverBorderColor = Color.Red;
+                RecButton.OnHoverButtonColor = Color.Red;    
+                RecButton.TextColor = Color.White;
+               // RecButton.BorderColor = Color.Green;
+                RecButton.ButtonColor = Color.Green;
+                RecButton.ForeColor = Color.Red;
+                RecButton.FlatAppearance.BorderSize = 0;
+                //RecButton.BackColor = Color.Transparent;
+                RecButton.FlatStyle = FlatStyle.Flat;
+                RecButton.Text = "";
+                RecButton.BringToFront(); 
+                RecButton.Font = new Font("arial", 8);
+                RecButton.TextAlign = ContentAlignment.MiddleCenter;
+                RecButton.Location = new Point(1, 1);
+                RecButton.Size = new Size(25, 25);
+                //  RecButton.Dock = DockStyle.;
+            }
+        }
+
         private void buttonDelete(RoundedButton DeleteButton)
         {
             if (!Frender)
@@ -328,6 +355,7 @@ namespace RECO.Forms
                 label.BorderStyle = BorderStyle.None;
                 label.Font = new Font("Comic Sans MS", 12, FontStyle.Bold);
                 label.ForeColor = Color.White;
+                label.Size = new Size(50, 40);
                 label.TextAlign = ContentAlignment.MiddleCenter;
                 label.Margin = new Padding(7);
                 label.Location = new Point(30, 10);
@@ -436,10 +464,11 @@ namespace RECO.Forms
 
             if ((dirs.Length != 0))
             {
-                foreach (DirectoryInfo dri in dirArr.OrderBy(_=> _.Name))
+                foreach (DirectoryInfo dri in dirArr.OrderBy(_ => _.Name))
                 {
-                string    allDirpath = path+@"\" + dri.Name ;
+                    string allDirpath = path + @"\" + dri.Name;
                     RoundedButton button_x = new RoundedButton(); // remove button
+                    RoundedButton button_O = new RoundedButton();
                     Label repoNamelable = new Label(); // """label that holds the repo name
                     Panel panel = new Panel();
                     panel.Text = dri.Name;
@@ -447,19 +476,20 @@ namespace RECO.Forms
                     repoNamelable.Text = dri.Name;
                     panel.Controls.Add(repoNamelable);
                     PanelView(panel, repoNamelable, allDirpath);
-                  if (Frender)   {
+                    if (Frender)
+                    {
                         RoundedButton Browse = new();
                         buttonBrowse(Browse, allDirpath);
                         panel.Controls.Add(Browse);
                     }
                     // the panel holds dir name button && remove button && rename button
-                    RoundedButton repoRename = new (); // the I button , next to remove button
+                    RoundedButton repoRename = new(); // the I button , next to remove button
                     //Delete(button_x, allDirpath, panel);
                     //buttonDelete(button_x);
                     buttonEdit(repoRename);
-                 
 
-                 
+
+
                     repoRename.Click += delegate //rename button
                     {
                         EditDialogeMessage edit = new EditDialogeMessage();
@@ -494,7 +524,7 @@ namespace RECO.Forms
                                 done.Show();
                             }
 
-                            else if (content == CheckName(content,path))
+                            else if (content == CheckName(content, path))
                             {
                                 MessageBox.Show("Repo name is already exists", "Error",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -509,7 +539,7 @@ namespace RECO.Forms
                                 Done done = new Done();
                                 done.Show();
                                 repoNamelable.Text = content;
-                               // MessageBox.Show(allDirpath);
+                                // MessageBox.Show(allDirpath);
                                 edit.Dispose();
                                 done.Dispose();
                             }
@@ -519,12 +549,32 @@ namespace RECO.Forms
 
 
                     };
+
+                    button_O.Click += delegate
+                    {
+                        string repopath = path + repoNamelable.Text;
+                        Recognizer r = new Recognizer(repopath);
+                        r.Show();
+                    };
+                    if (!Frender) { 
                     Delete(button_x, allDirpath, panel);
                     buttonDelete(button_x);
                     buttonEdit(repoRename);
+                    buttonRec(button_O);
                     panel.Controls.Add(button_x);
                     panel.Controls.Add(repoNamelable);
                     panel.Controls.Add(repoRename);
+                    repoNamelable.Controls.Add(button_O);
+                      }
+                    else {
+                        Delete(button_x, allDirpath, panel);
+                        buttonDelete(button_x);
+                        buttonEdit(repoRename);
+                        buttonRec(button_O);
+                        panel.Controls.Add(button_x);
+                        panel.Controls.Add(repoNamelable);
+                        panel.Controls.Add(repoRename);
+                    }
                     flowLayoutPanel1.Controls.Add(panel); // add the panel itself to the flow panel
                     i++;
     }//end foreach
@@ -638,6 +688,7 @@ namespace RECO.Forms
  
                 DirectoryInfo d = new DirectoryInfo(dir);
                 RoundedButton button_x = new RoundedButton() ;
+                RoundedButton button_O = new RoundedButton();
                 Panel panel = new Panel();
                 Label repoName = new Label();
                 repoName.Text = createdName;
@@ -650,15 +701,32 @@ namespace RECO.Forms
                     buttonBrowse(Browse, dir);
                     panel.Controls.Add(Browse);
                 }
-            
-                RoundedButton repoRename = new ();
-                buttonEdit(repoRename);
+                RoundedButton repoRename = new();
+                if (!Frender)
+                {
+                   
+                    buttonEdit(repoRename);
 
-                Delete(button_x, dir, panel);
-                buttonDelete(button_x);
-                panel.Controls.Add(repoName);
-                panel.Controls.Add(button_x);
-                panel.Controls.Add(repoRename);
+                    Delete(button_x, dir, panel);
+                    buttonDelete(button_x);
+                    buttonRec(button_O);
+                    panel.Controls.Add(repoName);
+                    panel.Controls.Add(button_x);
+                    panel.Controls.Add(repoRename);
+                    repoName.Controls.Add(button_O);
+                }
+                else
+                {
+                    
+                    buttonEdit(repoRename);
+
+                    Delete(button_x, dir, panel);
+                    buttonDelete(button_x);
+                    buttonRec(button_O);
+                    panel.Controls.Add(repoName);
+                    panel.Controls.Add(button_x);
+                    panel.Controls.Add(repoRename);
+                }
 
                 repoRename.Click += delegate //rename button
                 {
@@ -707,6 +775,17 @@ namespace RECO.Forms
                             done.Show();
                         }
                     };//end delegete 
+                };
+
+                string[] dirs = Directory.GetDirectories(path);
+                button_O.Click += delegate
+                {
+                    if (dirs.Contains(repoName.Text))
+                    {
+                        string repopath = path + repoName.Text;
+                        Recognizer r = new Recognizer(repopath);
+                        r.Show();
+                    }   
                 };
          
                 //};//end deleget 

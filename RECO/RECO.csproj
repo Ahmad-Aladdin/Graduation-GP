@@ -126,6 +126,7 @@
     <Compile Include="FormMainMenu.Designer.cs">
       <DependentUpon>FormMainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\WinAPI.cs" />
     <Compile Include="Forms\DeleteDialogeMessage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,11 +163,11 @@
     <Compile Include="Forms\Listen.Designer.cs">
       <DependentUpon>Listen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Loading.cs">
+    <Compile Include="Forms\Recognizer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Loading.Designer.cs">
-      <DependentUpon>Loading.cs</DependentUpon>
+    <Compile Include="Forms\Recognizer.Designer.cs">
+      <DependentUpon>Recognizer.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Repositories.cs">
       <SubType>Form</SubType>
@@ -185,11 +186,20 @@
     <EmbeddedResource Include="FormMainMenu.resx">
       <DependentUpon>FormMainMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DeleteDialogeMessage.resx">
+      <DependentUpon>DeleteDialogeMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Done.resx">
+      <DependentUpon>Done.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditDialogeMessage.resx">
+      <DependentUpon>EditDialogeMessage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Listen.resx">
       <DependentUpon>Listen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Loading.resx">
-      <DependentUpon>Loading.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Recognizer.resx">
+      <DependentUpon>Recognizer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Repositories.resx">
       <DependentUpon>Repositories.cs</DependentUpon>

@@ -36,5 +36,10 @@ namespace RECO.Forms
         {
             Dispose();
         }
+
+        private void Yes_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
