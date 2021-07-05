@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ePOSOne.btnProduct.RoundedButton">
+    <Position X="8.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAACIQAAIEAiAAAACAAIAAAACAFEAAAAAAII=</HashCode>
+      <FileName>classes\RoundedButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.IO.DirectoryInfoExtensions">
+    <Position X="3" Y="10.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>classes\SystemExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RECO.formMain">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <NestedTypes>
+      <Struct Name="RECO.formMain.RGBColors" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>FormMainMenu.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>kAAJYgACECAABgAAALCAABIKCDAEBgVAgAAAAQBQAAw=</HashCode>
+      <FileName>FormMainMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RECO.Program">
+    <Position X="8.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RECO.Forms.DeleteDialogeMessage">
+    <Position X="13" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQQAQCAQAJAAAACAAAACQAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Forms\DeleteDialogeMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RECO.Forms.Done">
+    <Position X="11" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAACAAAAAAAACAAAACAAAIAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Forms\Done.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RECO.Forms.EditDialogeMessage">
+    <Position X="11" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gEAAAAAAgCAAAAAAAACAAQACAAAAAAAACAAAAEAAAQA=</HashCode>
+      <FileName>Forms\EditDialogeMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RECO.Forms.Info">
+    <Position X="13" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Forms\Info.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RECO.Forms.KeyWords">
+    <Position X="10.75" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAACAAAAAAAACABCACAAA4AAAAAACIAQAEAAA=</HashCode>
+      <FileName>Forms\KeyWords.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RECO.Forms.Listen">
+    <Position X="6.25" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>IAAAIAAAACAAFAABAACAAAQCACAACgAQAAAABABAQAA=</HashCode>
+      <FileName>Forms\Listen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RECO.Forms.Recognizer">
+    <Position X="8.25" Y="6.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAAECAAAAAAJAGCAAACFAAAAAAABAAAAARAAgA=</HashCode>
+      <FileName>Forms\Recognizer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RECO.Forms.Repositories">
+    <Position X="6.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QgEAEEAAACAAAgAAQACIACAKAIEBBQAAAAAAAAAEAGA=</HashCode>
+      <FileName>Forms\Repositories.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RECO.Forms.RunTime">
+    <Position X="3" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AACCAARAECAAABAAAACWQAQKFgCIhgQABCAQAABAQAA=</HashCode>
+      <FileName>Forms\RunTime.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RECO.Forms.WinAPI">
+    <Position X="1" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Forms\WinAPI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RECO.Properties.Resources">
+    <Position X="12.75" Y="6.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAACAAAAAQAAAAJEAQAAQAAAACAABAAAIAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RECO.Properties.Settings">
+    <Position X="3" Y="9" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

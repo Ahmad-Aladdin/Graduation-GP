@@ -238,9 +238,10 @@ namespace RECO
             this.lblTitleChildForm.ForeColor = System.Drawing.Color.Gainsboro;
             this.lblTitleChildForm.Location = new System.Drawing.Point(60, 29);
             this.lblTitleChildForm.Name = "lblTitleChildForm";
-            this.lblTitleChildForm.Size = new System.Drawing.Size(56, 23);
+            this.lblTitleChildForm.Size = new System.Drawing.Size(46, 19);
             this.lblTitleChildForm.TabIndex = 1;
             this.lblTitleChildForm.Text = "Home";
+            this.lblTitleChildForm.Click += new System.EventHandler(this.lblTitleChildForm_Click);
             // 
             // iconCurrentChildForm
             // 
@@ -254,6 +255,7 @@ namespace RECO
             this.iconCurrentChildForm.Size = new System.Drawing.Size(32, 32);
             this.iconCurrentChildForm.TabIndex = 0;
             this.iconCurrentChildForm.TabStop = false;
+            this.iconCurrentChildForm.Click += new System.EventHandler(this.iconCurrentChildForm_Click);
             // 
             // panel1
             // 
@@ -292,7 +294,7 @@ namespace RECO
             // 
             // formMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1105, 591);

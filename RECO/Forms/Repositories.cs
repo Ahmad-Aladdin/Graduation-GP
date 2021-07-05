@@ -539,12 +539,11 @@ namespace RECO.Forms
                                 di.Rename(_PATH + content);
                                 //Microsoft.VisualBasic.FileIO.FileSystem.RenameDirectory(allDirpath, _PATH + content);
                                 allDirpath = _PATH + content;
-                                Done done = new Done();
-                                done.Show();
+                              
                                 repoNamelable.Text = content;
                                 // MessageBox.Show(allDirpath);
                                 edit.Dispose();
-                                done.Dispose();
+                               
                             }
 
                         };
