@@ -32,7 +32,7 @@ namespace RECO.Forms
         {
             string[] dirs = Directory.GetDirectories(path);
             int length = dirs.Length;
-            string[] keywords = new string[length + 2];
+            string[] keywords = new string[length + 1];
 
             for (int i = 0; i < length; i++)
             {
@@ -41,7 +41,6 @@ namespace RECO.Forms
             }
 
             keywords[length] = "next";
-            keywords[length + 1] = "exit";
 
             return keywords;
         }
@@ -89,8 +88,6 @@ namespace RECO.Forms
                 }
             }
 
-            else if (e.Result.Text == "exit" && e.Result.Confidence > 0.9)
-                this.Close();
 
             else
             {
